@@ -4,8 +4,8 @@ import './App.css';
 
 class App extends Component {
   render () {
-    var helloWorld = 'Welcome';
-    var username = 'Thuy Hang Le';
+    const helloWorld = 'Welcome';
+    let username = 'Thuy Hang Le';
     return (
       <div className="App">
         <header className="App-header">
