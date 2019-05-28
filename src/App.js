@@ -42,6 +42,12 @@ class App extends Component {
           >
             Learn React
           </a>
+          <div className="List">
+            <h3>List of items</h3>
+            {list.map(function(item) {
+              return <div>{item.title}</div>;
+            })}
+          </div>
         </header>
       </div>
     );
