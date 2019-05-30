@@ -44,16 +44,14 @@ class App extends Component {
           </a>
           <div className="List">
             <h3>List of items</h3>
-            {list.map(function(item) {
-              return (
-                <li key={item.objectID}>
-                  <a className="App-link" href={item.url}>{item.title}</a>
-                  <span>{item.author}</span>
-                  <span>{item.num_comments}</span>
-                  <span>{item.points}</span>
-                </li>
-              );
-            })}
+            {list.map(item =>
+              <li key={item.objectID}>
+                <a className="App-link" href={item.url}>{item.title}</a>
+                <span>{item.author}</span>
+                <span>{item.num_comments}</span>
+                <span>{item.points}</span>
+              </li>
+            )}
           </div>
         </header>
       </div>
