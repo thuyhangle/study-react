@@ -31,7 +31,13 @@ class App extends Component {
     };
 
     this.onDismiss = this.onDismiss.bind(this);
+
+    this.onClickMe = this.onClickMe.bind(this);
   }
+
+  onClickMe() {
+    console.log(this);
+    }
 
   onDismiss(id) {
     const isNotId = item => item.objectID !== id;
@@ -77,6 +83,14 @@ class App extends Component {
                 </span>
               </li>
             )}
+          </div>
+          <div className="Binding">
+            <button
+              onClick={this.onClickMe.bind(this)}
+              type="button"
+              >
+              Click Me
+            </button>
           </div>
         </header>
       </div>
