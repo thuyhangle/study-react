@@ -36,7 +36,7 @@ class App extends Component {
   }
 
   onClickMe() {
-    console.log(this);
+      console.log(this);
     }
 
   onDismiss(id) {
@@ -89,7 +89,7 @@ class App extends Component {
               onClick={this.onClickMe.bind(this)}
               type="button"
               >
-              Click Me
+              Click Me - Binding button - show log
             </button>
           </div>
         </header>
