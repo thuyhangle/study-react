@@ -67,21 +67,26 @@ class App extends Component {
           </a>
           <div className="List">
             <h3>List of items</h3>
-            {this.state.list.map(item =>
-              <li key={item.objectID}>
+            {this.state.list.map(item => {
+              const onHandleDismiss = () =>
+                this.onDismiss(item.objectID);
+              return (
+                <li key={item.objectID}>
                 <a className="App-link" href={item.url}>{item.title}</a>
                 <span>{item.author}</span>
                 <span>{item.num_comments}</span>
                 <span>{item.points}</span>
                 <span>
                   <button
-                  onClick={() => this.onDismiss(item.objectID)}
-                  type="button"
+                    onClick={onHandleDismiss}
+                    type="button"
                   >
                   Dismiss
                   </button>
                 </span>
               </li>
+              );
+            }
             )}
           </div>
           <div className="Binding">
