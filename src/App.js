@@ -98,6 +98,11 @@ class App extends Component {
               Click Me - Binding button - show log
             </button>
           </div>
+          <div className="Forms">
+            <form>
+              <input type="text" />
+            </form>
+          </div>
         </header>
       </div>
     );
