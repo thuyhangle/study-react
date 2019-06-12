@@ -100,7 +100,10 @@ class App extends Component {
           </div>
           <div className="Forms">
             <form>
-              <input type="text" />
+              <input
+                type="text"
+                onChange={this.onSearchChange}
+              />
             </form>
           </div>
         </header>
