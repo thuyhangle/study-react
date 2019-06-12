@@ -68,8 +68,6 @@ class App extends Component {
           <div className="List">
             <h3>List of items</h3>
             {this.state.list.map(item => {
-              const onHandleDismiss = () =>
-                this.onDismiss(item.objectID);
               return (
                 <li key={item.objectID}>
                 <a className="App-link" href={item.url}>{item.title}</a>
@@ -78,7 +76,6 @@ class App extends Component {
                 <span>{item.points}</span>
                 <span>
                   <button
-                    // onClick={onHandleDismiss}
                     onClick={() => this.onDismiss(item.objectID)}
                     type="button"
                   >
