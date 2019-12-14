@@ -28,7 +28,10 @@ class App extends Component {
 
     this.state = {
       list,
+      searchTerm: '',
     };
+
+    this.onSearchChange = this.onSearchChange.bind(this);
 
     this.onDismiss = this.onDismiss.bind(this);
 
@@ -37,12 +40,16 @@ class App extends Component {
 
   onClickMe() {
       console.log(this);
-    }
+  }
 
   onDismiss(id) {
     const isNotId = item => item.objectID !== id;
     const updatedList = this.state.list.filter(isNotId);
     this.setState({ list: updatedList });
+  }
+
+  onSearchChange(event) {
+    this.setState({ searchTerm: event.target.value });
   }
 
   render () {
@@ -88,6 +95,7 @@ class App extends Component {
             )}
           </div>
           <div className="Binding">
+            <h3>Binding</h3>
             <button
               onClick={this.onClickMe.bind(this)}
               type="button"
@@ -96,6 +104,7 @@ class App extends Component {
             </button>
           </div>
           <div className="Forms">
+            <h3>Forms</h3>
             <form>
               <input
                 type="text"
