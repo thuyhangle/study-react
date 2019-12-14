@@ -45,7 +45,7 @@ class App extends Component {
   }
 
   onClickMe() {
-      console.log(this);
+    console.log('this is:', this);
   }
 
   onSearchChange(event) {
@@ -79,13 +79,13 @@ class App extends Component {
             Learn React
           </a>
           <div className="Forms">
-            <h3>Forms</h3>
-            <form>
-              <input
-                type="text"
-                onChange={this.onSearchChange}
-              />
-            </form>
+              <form>
+                <label>Form </label>
+                <input
+                  type="text"
+                  onChange={this.onSearchChange}
+                />
+              </form>
           </div>
           <div className="List">
             <h3>List of items</h3>
@@ -110,13 +110,16 @@ class App extends Component {
             )}
           </div>
           <div className="Binding">
-            <h3>Binding</h3>
-            <button
-              onClick={this.onClickMe.bind(this)}
-              type="button"
-              >
-              Click Me - Binding button - show log
-            </button>
+            <h3>
+              <span>Binding</span>
+              <button
+                onClick={this.onClickMe.bind(this)}
+                type="button"
+                >
+                Click Me - Binding button - show log
+              </button>
+            </h3>
+
           </div>
 
         </header>
