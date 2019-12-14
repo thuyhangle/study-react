@@ -86,6 +86,7 @@ class App extends Component {
                 <label>Form </label>
                 <input
                   type="text"
+                  value={searchTerm}
                   onChange={this.onSearchChange}
                 />
               </form>
