@@ -61,23 +61,26 @@ class App extends Component {
   render () {
     const helloWorld = 'Welcome to ReactJS';
     let username = 'Thuy Hang Le';
+    const { searchTerm, list } = this.state;
     return (
       <div className="App">
         <header className="App-header">
-          <h2>{helloWorld}</h2>
-          <h3>Username: {username}</h3>
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
+          <div className="Init">
+            <h2>{helloWorld}</h2>
+            <h3>Username: {username}</h3>
+            <img src={logo} className="App-logo" alt="logo" />
+            <p>
+              Edit <code>src/App.js</code> and save to reload.
+            </p>
+            <a
+              className="App-link"
+              href="https://reactjs.org"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Learn React
+            </a>
+          </div>
           <div className="Forms">
               <form>
                 <label>Form </label>
@@ -89,7 +92,7 @@ class App extends Component {
           </div>
           <div className="List">
             <h3>List of items</h3>
-            {this.state.list.filter(isSearched(this.state.searchTerm)).map(item => {
+            {list.filter(isSearched(searchTerm)).map(item => {
               return (
                 <li key={item.objectID}>
                 <a className="App-link" href={item.url}>{item.title}</a>
