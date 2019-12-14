@@ -48,14 +48,14 @@ class App extends Component {
       console.log(this);
   }
 
+  onSearchChange(event) {
+    this.setState({ searchTerm: event.target.value });
+  }
+
   onDismiss(id) {
     const isNotId = item => item.objectID !== id;
     const updatedList = this.state.list.filter(isNotId);
     this.setState({ list: updatedList });
-  }
-
-  onSearchChange(event) {
-    this.setState({ searchTerm: event.target.value });
   }
 
   render () {
@@ -78,15 +78,21 @@ class App extends Component {
           >
             Learn React
           </a>
+          <div className="Forms">
+            <h3>Forms</h3>
+            <form>
+              <input
+                type="text"
+                onChange={this.onSearchChange}
+              />
+            </form>
+          </div>
           <div className="List">
             <h3>List of items</h3>
-            {this.state.list.map(item => {
+            {this.state.list.filter(isSearched(this.state.searchTerm)).map(item => {
               return (
                 <li key={item.objectID}>
                 <a className="App-link" href={item.url}>{item.title}</a>
-                <span>{item.author}</span>
-                <span>{item.num_comments}</span>
-                <span>{item.points}</span>
                 <span>
                   <button
                     onClick={() => this.onDismiss(item.objectID)}
@@ -95,6 +101,9 @@ class App extends Component {
                   Dismiss
                   </button>
                 </span>
+                <p>Name: <span>{item.author}</span></p>
+                <p>Comments: <span>{item.num_comments}</span></p>
+                <p>points: <span>{item.points}</span></p>
               </li>
               );
             }
@@ -109,15 +118,7 @@ class App extends Component {
               Click Me - Binding button - show log
             </button>
           </div>
-          <div className="Forms">
-            <h3>Forms</h3>
-            <form>
-              <input
-                type="text"
-                onChange={this.onSearchChange}
-              />
-            </form>
-          </div>
+
         </header>
       </div>
     );
