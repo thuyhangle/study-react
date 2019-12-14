@@ -119,7 +119,7 @@ class Search extends Component {
           <input
             type="text"
             value={value}
-            onChange={this.onSearchChange}
+            onChange={onChange}
           />
         </form>
       </div>
@@ -139,10 +139,10 @@ class Table extends Component {
             <a className="App-link" href={item.url}>{item.title}</a>
             <span>
               <button
-                onClick={() => this.onDismiss(item.objectID)}
+                onClick={() => onDismiss(item.objectID)}
                 type="button"
               >
-              Dismiss
+                Dismiss
               </button>
             </span>
             <p>Name: <span>{item.author}</span></p>
