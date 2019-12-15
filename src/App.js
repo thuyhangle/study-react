@@ -141,12 +141,12 @@ class Table extends Component {
             <li key={item.objectID}>
             <a className="App-link" href={item.url}>{item.title}</a>
             <span>
-              <button
+              <Button
                 onClick={() => onDismiss(item.objectID)}
                 type="button"
               >
                 Dismiss
-              </button>
+              </Button>
             </span>
             <p>Name: <span>{item.author}</span></p>
             <p>Comments: <span>{item.num_comments}</span></p>
@@ -156,6 +156,25 @@ class Table extends Component {
         }
         )}
       </div>
+    );
+  }
+}
+
+class Button extends Component {
+  render() {
+    const {
+      onClick,
+      className = '',
+      children,
+    } = this.props;
+    return(
+      <button
+        onClick={onClick}
+        className={className}
+        type="button"
+      >
+        {children}
+      </button>
     );
   }
 }
