@@ -63,7 +63,7 @@ class App extends Component {
     let username = 'Thuy Hang Le';
     const { searchTerm, list } = this.state;
     return (
-      <div className="App">
+      <div className="page">
         <header className="App-header">
           <div className="Init">
             <h2>{helloWorld}</h2>
@@ -81,13 +81,14 @@ class App extends Component {
               Learn React
             </a>
           </div>
-          <Search
-            value={searchTerm}
-            onChange={this.onSearchChange}
-          >
-            Search
-          </Search>
-
+          <div className="interactions">
+            <Search
+              value={searchTerm}
+              onChange={this.onSearchChange}
+            >
+              Search
+            </Search>
+          </div>
           <Table
             list={list}
             pattern={searchTerm}
@@ -125,24 +126,32 @@ const Search = ({ value, onChange, children }) =>
   </div>
 
 const Table = ({ list, pattern, onDismiss}) =>
-  <div className="List">
+  <div className="table">
     <h3>List of items</h3>
     {list.filter(isSearched(pattern)).map(item => {
       return (
-        <li key={item.objectID}>
-        <a className="App-link" href={item.url}>{item.title}</a>
-        <span>
-          <Button
-            onClick={() => onDismiss(item.objectID)}
-            type="button"
-          >
-            Dismiss
-          </Button>
-        </span>
-        <p>Name: <span>{item.author}</span></p>
-        <p>Comments: <span>{item.num_comments}</span></p>
-        <p>points: <span>{item.points}</span></p>
-      </li>
+        <div key={item.objectID} className="table-row">
+          <span style={{ width: '20%' }}>
+            <a href={item.url}>{item.title}</a>
+          </span>
+          <span style={{ width: '30%' }}>
+            {item.author}
+          </span>
+          <span style={{ width: '10%' }}>
+            {item.num_comments}
+          </span>
+          <span style={{ width: '10%' }}>
+            {item.points}
+          </span>
+          <span style={{ width: '30%' }}>
+            <Button
+              onClick={() => onDismiss(item.objectID)}
+              className="button-inline"
+              >
+              Dismiss
+            </Button>
+          </span>
+        </div>
       );
     }
     )}
