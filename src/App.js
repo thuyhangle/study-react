@@ -61,9 +61,6 @@ class App extends Component {
     const helloWorld = 'Welcome to ReactJS';
     let username = 'Thuy Hang Le';
     const { searchTerm, result } = this.state;
-
-    if (!result) { return null; }
-
     return (
       <div className="page">
         <header className="App-header">
@@ -91,11 +88,14 @@ class App extends Component {
               Search
             </Search>
           </div>
-          <Table
-            list={result.hits}
-            pattern={searchTerm}
-            onDismiss={this.onDismiss}
-          />
+          { result
+            ? <Table
+              list={result.hits}
+              pattern={searchTerm}
+              onDismiss={this.onDismiss}
+            />
+            :null
+          }
           <div className="Binding">
             <h3>
               <span>Binding</span>
