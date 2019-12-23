@@ -13,7 +13,8 @@ class App extends Component {
     super(props);
 
     this.state = {
-      result: null,
+      results: null,
+      searchKey: '',
       searchTerm: DEFAULT_QUERY,
     };
     this.setSearchTopStories = this.setSearchTopStories.bind(this);
@@ -37,6 +38,7 @@ class App extends Component {
 
   componentDidMount() {
     const { searchTerm } = this.state;
+    this.setState({ searchKey: searchTerm});
     this.fetchSearchTopStories(searchTerm);
   }
 
@@ -50,6 +52,7 @@ class App extends Component {
 
   onSearchSubmit(event) {
     const { searchTerm } = this.state;
+    this.setState({ searchKey: searchTerm });
     this.fetchSearchTopStories(searchTerm);
     event.preventDefault();
   }
