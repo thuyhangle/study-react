@@ -84,7 +84,20 @@ class App extends Component {
   render () {
     const helloWorld = 'Welcome to ReactJS';
     let username = 'Thuy Hang Le';
-    const { searchTerm, result } = this.state;
+    const { searchTerm, results, searchKey } = this.state;
+
+    const page = (
+      results &&
+      results[searchKey] &&
+      results[searchKey].page
+    ) || 0;
+
+    const list = (
+      results &&
+      results[searchKey] &&
+      results[searchKey].hits
+    ) || [];
+
     return (
       <div className="page">
         <header className="App-header">
@@ -113,13 +126,15 @@ class App extends Component {
               Search
             </Search>
           </div>
-          { result
-            ? <Table
-              list={result.hits}
-              onDismiss={this.onDismiss}
-            />
-            :null
-          }
+          <Table
+            list={list}
+            onDismiss={this.onDismiss}
+          />
+          <div className="interactions">
+            <Button onClick={() => this.fetchSearchTopStories(searchKey, page + 1)}>
+            More
+            </Button>
+          </div>
         </header>
       </div>
     );
