@@ -16,6 +16,7 @@ class App extends Component {
       results: null,
       searchKey: '',
       searchTerm: DEFAULT_QUERY,
+      error: null,
     };
     this.needsToSearchTopStories = this.needsToSearchTopStories.bind(this);
     this.setSearchTopStories = this.setSearchTopStories.bind(this);
@@ -54,7 +55,7 @@ class App extends Component {
     fetch(`${PATH_BASE}${PATH_SEARCH}?${PARAM_SEARCH}${searchTerm}`)
     .then(response => response.json())
     .then(result => this.setSearchTopStories(result))
-    .catch(error => error);
+    .catch(error => this.setState({ error }));
   }
 
   componentDidMount() {
@@ -98,7 +99,7 @@ class App extends Component {
   render () {
     const helloWorld = 'Welcome to ReactJS';
     let username = 'Thuy Hang Le';
-    const { searchTerm, results, searchKey } = this.state;
+    const { searchTerm, results, searchKey, error } = this.state;
 
     const page = (
       results &&
@@ -111,6 +112,10 @@ class App extends Component {
       results[searchKey] &&
       results[searchKey].hits
     ) || [];
+
+    if (error) {
+      return <p>Something went wrong.</p>;
+    }
 
     return (
       <div className="page">
